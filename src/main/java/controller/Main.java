@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import timers.DeletionTimer;
 
 import java.io.IOException;
 
@@ -32,6 +33,8 @@ public class Main extends Application {
             this.primaryStage.setScene(scene);
             this.primaryStage.setResizable(false);
             this.primaryStage.show();
+
+            new Thread(new DeletionTimer()).start();
 
             this.primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override

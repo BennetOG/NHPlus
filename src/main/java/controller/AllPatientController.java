@@ -13,6 +13,7 @@ import utils.DateConverter;
 import datastorage.DAOFactory;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -207,7 +208,7 @@ public class AllPatientController {
         String room = this.txtRoom.getText();
         String assets = this.txtAssets.getText();
         try {
-            Patient p = new Patient(firstname, surname, date, carelevel, room, assets);
+            Patient p = new Patient(firstname, surname, date, carelevel, room, assets, LocalTime.now());
             dao.create(p);
         } catch (SQLException e) {
             e.printStackTrace();

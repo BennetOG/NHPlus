@@ -2,6 +2,7 @@ package model;
 
 import utils.DateConverter;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +10,15 @@ import java.util.List;
  * Patients live in a NURSING home and are treated by nurses.
  */
 public class Patient extends Person {
+
+
     private long pid;
     private LocalDate dateOfBirth;
     private String careLevel;
     private String roomnumber;
     private String assets;
     private List<Treatment> allTreatments = new ArrayList<Treatment>();
+    private LocalTime creationTime;
 
     /**
      * constructs a patient from the given params.
@@ -24,13 +28,15 @@ public class Patient extends Person {
      * @param careLevel
      * @param roomnumber
      * @param assets
+     * @param creationTime
      */
-    public Patient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets) {
+    public Patient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets, LocalTime creationTime) {
         super(firstName, surname);
         this.dateOfBirth = dateOfBirth;
         this.careLevel = careLevel;
         this.roomnumber = roomnumber;
         this.assets = assets;
+        this.creationTime = creationTime;
     }
 
     /**
@@ -42,14 +48,16 @@ public class Patient extends Person {
      * @param careLevel
      * @param roomnumber
      * @param assets
+     * @param creationTime
      */
-    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets) {
+    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets, LocalTime creationTime) {
         super(firstName, surname);
         this.pid = pid;
         this.dateOfBirth = dateOfBirth;
         this.careLevel = careLevel;
         this.roomnumber = roomnumber;
         this.assets = assets;
+        this.creationTime = creationTime;
     }
 
     /**
@@ -123,6 +131,22 @@ public class Patient extends Person {
      */
     public void setAssets(String assets) {
         this.assets = assets;
+    }
+
+    /**
+     *
+     * @return creationTime as LocalTime
+     */
+    public LocalTime getCreationTime() {
+        return creationTime;
+    }
+
+    /**
+     *
+     * @param creationTime
+     */
+    public void setCreationTime(LocalTime creationTime) {
+        this.creationTime = creationTime;
     }
 
     /**
