@@ -35,7 +35,7 @@ public class AllCaregiverController {
     @FXML
     private TableColumn<Caregiver, Long> colCid;
     @FXML
-    private TableColumn<Caregiver, Long> colTeleNr;
+    private TableColumn<Caregiver, String> colTeleNr;
 
 
     @FXML
@@ -48,10 +48,7 @@ public class AllCaregiverController {
     TextField txtFirstname;
     @FXML
     TextField txtTeleNr;
-    @FXML
-    TextField txtCid;
-    @FXML
-    private TextField txtAssets;
+
 
     private ObservableList<Caregiver> tableviewContent = FXCollections.observableArrayList();
     private CaregiverDAO dao;
@@ -62,7 +59,7 @@ public class AllCaregiverController {
     public void initialize() {
         readAllAndShowInTableView();
 
-        this.colCid.setCellValueFactory(new PropertyValueFactory<Caregiver, Long>("cid"));
+     this.colCid.setCellValueFactory(new PropertyValueFactory<Caregiver, Long>("cid"));
 
         //CellValuefactory zum Anzeigen der Daten in der TableView
         this.colFirstName.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("firstName"));
@@ -72,10 +69,11 @@ public class AllCaregiverController {
         this.colSurname.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("surname"));
         this.colSurname.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.colTeleNr.setCellValueFactory(new PropertyValueFactory<Caregiver, Long>("teleNr"));
+        this.colTeleNr.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("teleNr"));
 
         //Anzeigen der Daten
         this.tableView.setItems(this.tableviewContent);
+
     }
 
     /**
@@ -153,7 +151,7 @@ public class AllCaregiverController {
     public void handleAdd() {
         String surname = this.txtSurname.getText();
         String firstname = this.txtFirstname.getText();
-        Long teleNr = Long.valueOf(this.txtTeleNr.getText());
+        String teleNr = this.txtTeleNr.getText();
         try {
             Caregiver c = new Caregiver(firstname, surname, teleNr);
             dao.create(c);

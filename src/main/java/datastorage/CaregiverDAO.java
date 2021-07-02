@@ -48,7 +48,7 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
         Caregiver c = null;
         LocalDate date = DateConverter.convertStringToLocalDate(result.getString(4));
         c = new Caregiver(result.getString(1),
-                result.getString(2),  result.getLong(3));
+                result.getString(2),  result.getString(3));
         return c;
     }
 
@@ -71,8 +71,7 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
         ArrayList<Caregiver> list = new ArrayList<Caregiver>();
         Caregiver c = null;
         while (result.next()) {
-            LocalDate date = DateConverter.convertStringToLocalDate(result.getString(4));
-            c = new Caregiver (result.getString(1), result.getString(2),result.getLong(3));
+            c = new Caregiver (result.getString(1), result.getString(2),result.getString(3));
 
             list.add(c);
         }
