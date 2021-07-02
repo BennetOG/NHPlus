@@ -29,7 +29,7 @@ public class DeletionTimer implements Runnable {
                 PatientDAO patientDAO = DAOFactory.getDAOFactory().createPatientDAO();
 
                 for(Patient patient : patientDAO.readAll()) {
-                    if(LocalDateTime.now().isAfter(patient.getCreationTime().plusDays(60))) {
+                    if(LocalDateTime.now().isAfter(patient.getCreationTime().plusSeconds(60))) {
                         treatmentDAO.deleteByPid(patient.getPid());
                         patientDAO.deleteById(patient.getPid());
                     }
