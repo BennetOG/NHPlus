@@ -27,7 +27,7 @@ public class DateConverter {
     }
 
     public static String formatLocalDateTime(LocalDateTime localDateTime) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return localDateTime.format(dateTimeFormatter);
     }
 }

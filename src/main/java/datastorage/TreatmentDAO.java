@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +34,8 @@ public class TreatmentDAO extends DAOimp<Treatment> {
     @Override
     protected Treatment getInstanceFromResultSet(ResultSet result) throws SQLException {
         LocalDate date = DateConverter.convertStringToLocalDate(result.getString(3));
-        LocalTime begin = DateConverter.convertStringToLocalTime(result.getString(4));
-        LocalTime end = DateConverter.convertStringToLocalTime(result.getString(5));
+        LocalDateTime begin = DateConverter.convertStringToLocalDateTime(result.getString(4));
+        LocalDateTime end = DateConverter.convertStringToLocalDateTime(result.getString(5));
         Treatment m = new Treatment(result.getLong(1), result.getLong(2),
                 date, begin, end, result.getString(6), result.getString(7));
         return m;
@@ -51,8 +52,8 @@ public class TreatmentDAO extends DAOimp<Treatment> {
         Treatment t = null;
         while (result.next()) {
             LocalDate date = DateConverter.convertStringToLocalDate(result.getString(3));
-            LocalTime begin = DateConverter.convertStringToLocalTime(result.getString(4));
-            LocalTime end = DateConverter.convertStringToLocalTime(result.getString(5));
+            LocalDateTime begin = DateConverter.convertStringToLocalDateTime(result.getString(4));
+            LocalDateTime end = DateConverter.convertStringToLocalDateTime(result.getString(5));
             t = new Treatment(result.getLong(1), result.getLong(2),
                     date, begin, end, result.getString(6), result.getString(7));
             list.add(t);

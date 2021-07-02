@@ -15,11 +15,14 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    private static boolean isRunning;
+
     private Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
+        this.isRunning = true;
         mainWindow();
     }
 
@@ -41,6 +44,7 @@ public class Main extends Application {
                 public void handle(WindowEvent e) {
                     ConnectionBuilder.closeConnection();
                     Platform.exit();
+                    isRunning = false;
                     System.exit(0);
                 }
             });
@@ -52,5 +56,9 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static boolean isRunning() {
+        return isRunning;
     }
 }

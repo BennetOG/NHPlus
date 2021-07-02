@@ -55,8 +55,8 @@ public class TreatmentController {
         this.lblCarelevel.setText(patient.getCareLevel());
         LocalDate date = DateConverter.convertStringToLocalDate(treatment.getDate());
         this.datepicker.setValue(date);
-        this.txtBegin.setText(this.treatment.getBegin());
-        this.txtEnd.setText(this.treatment.getEnd());
+        this.txtBegin.setText(this.treatment.getBegin().toString());
+        this.txtEnd.setText(this.treatment.getEnd().toString());
         this.txtDescription.setText(this.treatment.getDescription());
         this.taRemarks.setText(this.treatment.getRemarks());
     }
