@@ -3,11 +3,14 @@ package timers;
 import datastorage.ConnectionBuilder;
 import datastorage.DAOFactory;
 import datastorage.PatientDAO;
+import datastorage.TreatmentDAO;
 import model.Patient;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DeletionTimer implements Runnable {
@@ -17,27 +20,24 @@ public class DeletionTimer implements Runnable {
 
         while (true) {
             try {
-                if (!ConnectionBuilder.getConnection().isClosed()) break;
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            try {
+                Thread.sleep(6000);
 
-                PatientDAO dao = DAOFactory.getDAOFactory().createPatientDAO();
+                TreatmentDAO treatmentDAO = DAOFactory.getDAOFactory().createTreatmentDAO();
+                PatientDAO patientDAO = DAOFactory.getDAOFactory().createPatientDAO();
 
-                for(Patient patient : dao.readAll()) {
-                    if(patient.getCreationTime().plusSeconds(60).isAfter(LocalTime.now())) {
-                        dao.deleteById(patient.getPid());
+                for(Patient patient : patientDAO.readAll()) {
+                    if(LocalDateTime.now().isAfter(patient.getCreationTime().plusSeconds(10))) {
+                        treatmentDAO.deleteByPid(patient.getPid());
+                        patientDAO.deleteById(patient.getPid());
                     }
                 }
 
-                Thread.sleep(60000);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
 
-        Thread.currentThread().stop();
+        //Thread.currentThread().stop();
     }
 
 
