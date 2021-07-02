@@ -13,11 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import model.Caregiver;
-import utils.DateConverter;
+
 
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 public class AllCaregiverController {
@@ -68,6 +66,11 @@ public class AllCaregiverController {
 
     }
 
+    @FXML
+    public void handleOnEditTeleNr(TableColumn.CellEditEvent<Caregiver, String> event){
+        event.getRowValue().setTeleNr(event.getNewValue());
+        doUpdate(event);
+    }
     @FXML
     public void handleOnEditFirstname(TableColumn.CellEditEvent<Caregiver, String> event){
         event.getRowValue().setFirstName(event.getNewValue());

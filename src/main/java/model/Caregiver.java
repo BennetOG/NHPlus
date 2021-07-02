@@ -22,11 +22,13 @@ public class Caregiver extends Person {
     }
 
     public String getTeleNr() {
-        return (teleNr) ;
+        return teleNr ;
     }
     public void setTeleNr(String teleNr){
        this.teleNr = teleNr ;
     }
+
+
 
     public String toString() {
         return "Pflegekraft" + "\nMNID: " + this.cid +
