@@ -2,6 +2,7 @@ package model;
 
 import utils.DateConverter;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Patient extends Person {
     private String roomnumber;
     private String assets;
     private List<Treatment> allTreatments = new ArrayList<Treatment>();
-    private LocalTime creationTime;
+    private LocalDateTime creationTime;
 
     /**
      * constructs a patient from the given params.
@@ -30,7 +31,7 @@ public class Patient extends Person {
      * @param assets
      * @param creationTime
      */
-    public Patient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets, LocalTime creationTime) {
+    public Patient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets, LocalDateTime creationTime) {
         super(firstName, surname);
         this.dateOfBirth = dateOfBirth;
         this.careLevel = careLevel;
@@ -50,7 +51,7 @@ public class Patient extends Person {
      * @param assets
      * @param creationTime
      */
-    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets, LocalTime creationTime) {
+    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets, LocalDateTime creationTime) {
         super(firstName, surname);
         this.pid = pid;
         this.dateOfBirth = dateOfBirth;
@@ -137,7 +138,7 @@ public class Patient extends Person {
      *
      * @return creationTime as LocalTime
      */
-    public LocalTime getCreationTime() {
+    public LocalDateTime getCreationTime() {
         return creationTime;
     }
 
@@ -145,7 +146,7 @@ public class Patient extends Person {
      *
      * @param creationTime
      */
-    public void setCreationTime(LocalTime creationTime) {
+    public void setCreationTime(LocalDateTime creationTime) {
         this.creationTime = creationTime;
     }
 

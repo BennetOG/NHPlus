@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -51,10 +53,10 @@ public class PatientDAO extends DAOimp<Patient> {
     protected Patient getInstanceFromResultSet(ResultSet result) throws SQLException {
         Patient p = null;
         LocalDate date = DateConverter.convertStringToLocalDate(result.getString(4));
+        LocalDateTime localDateTime = !result.getString(8).trim().equals("") ? DateConverter.convertStringToLocalDateTime(result.getString(8)) : LocalDateTime.now();
         p = new Patient(result.getInt(1), result.getString(2),
                 result.getString(3), date, result.getString(5),
-                result.getString(6), result.getString(7),
-                result.getTime(8).toLocalTime());
+                result.getString(6), result.getString(7), localDateTime);
         return p;
     }
 
@@ -78,10 +80,11 @@ public class PatientDAO extends DAOimp<Patient> {
         Patient p = null;
         while (result.next()) {
             LocalDate date = DateConverter.convertStringToLocalDate(result.getString(4));
+            LocalDateTime localDateTime = !result.getString(8).trim().equals("") ? DateConverter.convertStringToLocalDateTime(result.getString(8)) : LocalDateTime.now();
             p = new Patient(result.getInt(1), result.getString(2),
                     result.getString(3), date,
                     result.getString(5), result.getString(6),
-                    result.getString(7), result.getTime(8).toLocalTime());
+                    result.getString(7), localDateTime);
             list.add(p);
         }
         return list;
@@ -106,6 +109,6 @@ public class PatientDAO extends DAOimp<Patient> {
      */
     @Override
     protected String getDeleteStatementString(long key) {
-        return String.format("Delete FROM patient WHERE pid=%d", key);
+        return String.format("Delete FROM patient WHERE pid = %d", key);
     }
 }
