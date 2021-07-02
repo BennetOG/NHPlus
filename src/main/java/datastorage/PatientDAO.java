@@ -55,7 +55,7 @@ public class PatientDAO extends DAOimp<Patient> {
     protected Patient getInstanceFromResultSet(ResultSet result) throws SQLException {
         Patient p = null;
         LocalDate date = DateConverter.convertStringToLocalDate(result.getString(4));
-        LocalDateTime localDateTime = !result.getString(8).trim().equals("") ? DateConverter.convertStringToLocalDateTime(result.getString(8)) : LocalDateTime.now();
+        LocalDateTime localDateTime = !result.getString(7).trim().equals("") ? DateConverter.convertStringToLocalDateTime(result.getString(7)) : LocalDateTime.now();
         p = new Patient(result.getInt(1), result.getString(2),
                 result.getString(3), date, result.getString(5),
                 result.getString(6),  localDateTime);
@@ -82,7 +82,7 @@ public class PatientDAO extends DAOimp<Patient> {
         Patient p = null;
         while (result.next()) {
             LocalDate date = DateConverter.convertStringToLocalDate(result.getString(4));
-            LocalDateTime localDateTime = !result.getString(8).trim().equals("") ? DateConverter.convertStringToLocalDateTime(result.getString(8)) : LocalDateTime.now();
+            LocalDateTime localDateTime = !result.getString(7).trim().equals("") ? DateConverter.convertStringToLocalDateTime(result.getString(7)) : LocalDateTime.now();
             p = new Patient(result.getInt(1), result.getString(2),
                     result.getString(3), date,
                     result.getString(5), result.getString(6),

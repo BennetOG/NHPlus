@@ -7,6 +7,7 @@ import datastorage.DAOFactory;
 import datastorage.PatientDAO;
 import datastorage.TreatmentDAO;
 import model.Patient;
+import model.Treatment;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
