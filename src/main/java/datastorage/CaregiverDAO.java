@@ -16,13 +16,13 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
 
     @Override
     protected String getCreateStatementString(Caregiver caregiver) {
-        return String.format("INSERT INTO caregiver (cid, firstname, surname, teleNr) VALUES (%s, '%s', '%s', '%s')",
-                caregiver.getCid(), caregiver.getFirstName(), caregiver.getSurname(), caregiver.getTeleNr());
+        return String.format("INSERT INTO caregiver (firstname, surname, teleNr) VALUES ('%s', '%s', '%s')",
+                caregiver.getFirstName(), caregiver.getSurname(), caregiver.getTeleNr());
     }
 
     @Override
     protected String getReadByIDStatementString(long key) {
-        return String.format("SELECT * FROM caregiver WHERE pid = %d", key);
+        return String.format("SELECT * FROM caregiver WHERE cid = %d", key);
     }
 
     @Override
@@ -58,6 +58,6 @@ public class CaregiverDAO extends DAOimp<Caregiver> {
 
     @Override
     protected String getDeleteStatementString(long key) {
-        return String.format("Delete FROM caregiver WHERE pid = %d", key);
+        return String.format("Delete FROM caregiver WHERE cid = %d", key);
     }
 }
