@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import model.Caregiver;
-import model.Patient;
 import utils.DateConverter;
 
 import java.sql.SQLException;
@@ -149,8 +148,8 @@ public class AllCaregiverController {
 
     @FXML
     public void handleAdd() {
-        String surname = this.txtSurname.getText();
         String firstname = this.txtFirstname.getText();
+        String surname = this.txtSurname.getText();
         String teleNr = this.txtTeleNr.getText();
         try {
             Caregiver c = new Caregiver(firstname, surname, teleNr);
