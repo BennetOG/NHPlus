@@ -17,7 +17,6 @@ public class Patient extends Person {
     private LocalDate dateOfBirth;
     private String careLevel;
     private String roomnumber;
-    private String assets;
     private List<Treatment> allTreatments = new ArrayList<Treatment>();
     private LocalDateTime creationTime;
 
@@ -28,15 +27,13 @@ public class Patient extends Person {
      * @param dateOfBirth
      * @param careLevel
      * @param roomnumber
-     * @param assets
      * @param creationTime
      */
-    public Patient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets, LocalDateTime creationTime) {
+    public Patient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, LocalDateTime creationTime) {
         super(firstName, surname);
         this.dateOfBirth = dateOfBirth;
         this.careLevel = careLevel;
         this.roomnumber = roomnumber;
-        this.assets = assets;
         this.creationTime = creationTime;
     }
 
@@ -48,16 +45,14 @@ public class Patient extends Person {
      * @param dateOfBirth
      * @param careLevel
      * @param roomnumber
-     * @param assets
      * @param creationTime
      */
-    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String assets, LocalDateTime creationTime) {
+    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, LocalDateTime creationTime) {
         super(firstName, surname);
         this.pid = pid;
         this.dateOfBirth = dateOfBirth;
         this.careLevel = careLevel;
         this.roomnumber = roomnumber;
-        this.assets = assets;
         this.creationTime = creationTime;
     }
 
@@ -120,22 +115,6 @@ public class Patient extends Person {
 
     /**
      *
-     * @return assets as string
-     */
-    public String getAssets() {
-        return assets;
-    }
-
-    /**
-     *
-     * @param assets
-     */
-    public void setAssets(String assets) {
-        this.assets = assets;
-    }
-
-    /**
-     *
      * @return creationTime as LocalTime
      */
     public LocalDateTime getCreationTime() {
@@ -174,7 +153,6 @@ public class Patient extends Person {
                 "\nBirthday: " + this.dateOfBirth +
                 "\nCarelevel: " + this.careLevel +
                 "\nRoomnumber: " + this.roomnumber +
-                "\nAssets: " + this.assets +
                 "\n";
     }
 }

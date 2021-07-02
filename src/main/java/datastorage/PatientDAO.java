@@ -30,10 +30,10 @@ public class PatientDAO extends DAOimp<Patient> {
      */
     @Override
     protected String getCreateStatementString(Patient patient) {
-        return String.format("INSERT INTO patient (firstname, surname, dateOfBirth, carelevel, roomnumber, assets, creationTime) " +
-                        "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+        return String.format("INSERT INTO patient (firstname, surname, dateOfBirth, carelevel, roomnumber, creationTime) " +
+                        "VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
                 patient.getFirstName(), patient.getSurname(), patient.getDateOfBirth(), patient.getCareLevel(), patient.getRoomnumber(),
-                patient.getAssets(), DateConverter.formatLocalDateTime(patient.getCreationTime()));
+                DateConverter.formatLocalDateTime(patient.getCreationTime()));
     }
 
     /**
@@ -58,7 +58,7 @@ public class PatientDAO extends DAOimp<Patient> {
         LocalDateTime localDateTime = !result.getString(8).trim().equals("") ? DateConverter.convertStringToLocalDateTime(result.getString(8)) : LocalDateTime.now();
         p = new Patient(result.getInt(1), result.getString(2),
                 result.getString(3), date, result.getString(5),
-                result.getString(6), result.getString(7), localDateTime);
+                result.getString(6),  localDateTime);
         return p;
     }
 
@@ -86,7 +86,7 @@ public class PatientDAO extends DAOimp<Patient> {
             p = new Patient(result.getInt(1), result.getString(2),
                     result.getString(3), date,
                     result.getString(5), result.getString(6),
-                    result.getString(7), localDateTime);
+                     localDateTime);
             list.add(p);
         }
         return list;
@@ -100,8 +100,8 @@ public class PatientDAO extends DAOimp<Patient> {
     @Override
     protected String getUpdateStatementString(Patient patient) {
         return String.format("UPDATE patient SET firstname = '%s', surname = '%s', dateOfBirth = '%s', carelevel = '%s', " +
-                "roomnumber = '%s', assets = '%s', creationTime = '%s' WHERE pid = %d", patient.getFirstName(), patient.getSurname(), patient.getDateOfBirth(),
-                patient.getCareLevel(), patient.getRoomnumber(), patient.getAssets(), patient.getCreationTime(), patient.getPid());
+                "roomnumber = '%s', creationTime = '%s' WHERE pid = %d", patient.getFirstName(), patient.getSurname(), patient.getDateOfBirth(),
+                patient.getCareLevel(), patient.getRoomnumber(),  patient.getCreationTime(), patient.getPid());
     }
 
     /**
