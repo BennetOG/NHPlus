@@ -53,7 +53,7 @@ public class TreatmentController {
     private void showData(){
         this.lblPatientName.setText(patient.getSurname()+", "+patient.getFirstName());
         this.lblCarelevel.setText(patient.getCareLevel());
-        LocalDate date = DateConverter.convertStringToLocalDate(treatment.getDate());
+        LocalDate date = treatment.getDate();
         this.datepicker.setValue(date);
         this.txtBegin.setText(this.treatment.getBegin().toString());
         this.txtEnd.setText(this.treatment.getEnd().toString());

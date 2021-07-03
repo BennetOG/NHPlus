@@ -52,8 +52,8 @@ public class NewTreatmentController {
     public void handleAdd(){
         LocalDate date = this.datepicker.getValue();
         String s_begin = txtBegin.getText();
-        LocalDateTime begin = DateConverter.convertStringToLocalDateTime(txtBegin.getText());
-        LocalDateTime end = DateConverter.convertStringToLocalDateTime(txtEnd.getText());
+        LocalTime begin = DateConverter.convertStringToLocalTime(txtBegin.getText());
+        LocalTime end = DateConverter.convertStringToLocalTime(txtEnd.getText());
         String description = txtDescription.getText();
         String remarks = taRemarks.getText();
         Treatment treatment = new Treatment(patient.getPid(), date,

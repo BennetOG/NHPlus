@@ -10,6 +10,7 @@ import model.Patient;
 import model.Treatment;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class DeletionTimer implements Runnable {
                 PatientDAO patientDAO = DAOFactory.getDAOFactory().createPatientDAO();
 
                 for(Patient patient : patientDAO.readAll()) {
-                    if(LocalDateTime.now().isAfter(patient.getCreationTime().plusSeconds(60))) {
+                    if(LocalDateTime.now().isAfter(patient.getCreationTime().plusMinutes(1))) {
                         treatmentDAO.deleteByPid(patient.getPid());
                         patientDAO.deleteById(patient.getPid());
                     }
